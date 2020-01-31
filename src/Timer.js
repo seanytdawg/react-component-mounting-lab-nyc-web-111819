@@ -5,7 +5,15 @@ class Timer extends Component {
     time: 0,
     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
   };
+  
+  componentDidMount(){
+    this.interval = setInterval(this.clockTick, 1000)
 
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval)
+
+  }
   // add your code here
 
   render() {
@@ -35,6 +43,7 @@ class Timer extends Component {
   handleClose = () => {
     this.props.removeTimer(this.props.id);
   };
+
 }
 
 export default Timer;
